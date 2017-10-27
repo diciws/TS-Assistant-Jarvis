@@ -32,12 +32,12 @@ public class jarvis {
         System.out.println(" ");
         System.out.println("Starting Jarvis-System...");
         System.out.println("Connecting to IP...");
-        config.setHost("---Ip-Adresse---");//Hier steht die IP
-        config.setDebugLevel(Level.ALL);
+        config.setHost("localhost");
+        config.setQueryPort(10011);
         query.connect();
-        api.selectVirtualServerById(2);
-        api.selectVirtualServerByPort(9992);
-        api.login("---QueryName---", "---QueryPW---");//Query Name und Passwort
+        query.getApi().login("serveradmin", "passwd");
+        config.setDebugLevel(Level.ALL);
+        query.getApi().selectVirtualServerById(1);
         System.out.println("Connected to Server!");
         api.setNickname("Jarvis");
         System.out.println("Nickname set '\033Jarvis0m'");

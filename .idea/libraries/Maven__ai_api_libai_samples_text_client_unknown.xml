@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: ai.api.libai.samples:text-client:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ai/api/libai/samples/text-client/unknown/text-client-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/ai/api/libai/samples/text-client/unknown/text-client-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/ai/api/libai/samples/text-client/unknown/text-client-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
