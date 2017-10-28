@@ -22,32 +22,31 @@ public class jarvis {
 
 
     public static void main(String[] args) {
-        System.out.println("------------------[\033Jarvis0m]------------------");
-        System.out.println("Start \033Jarvis0m ...");
+        System.out.println("-----------------------------[\033[35mJarvis\033[0m]-----------------------------");
+		System.out.println("\033[35mJarvis\033[0m: \033[32mStarting\033[0m . . .");
         System.out.println("________________________________________");
         System.out.println(" ");
-        System.out.println("Version: 32m[v1.0]0m");
+ 		System.out.println("Version: \033[35mv1.0\033[0m");
         System.out.println("Updates: http://github.com/diciws");
         System.out.println("________________________________________");
         System.out.println(" ");
-        System.out.println("Starting Jarvis-System...");
-        System.out.println("Connecting to IP...");
-        config.setHost("tntfreaks.de");
-
+        System.out.println("\033[35mJarvis\033[0m: Starting System ...");
+        System.out.println("\033[35mJarvis\033[0m: Connecting to IP...");
+        config.setHost("ServerIP");// Server IP zum Connecten
         query.connect();
         //api.login("Jarvis", "passwd");
-        api.login("serveradmin", "passwd");
-        api.selectVirtualServerById(1);
+        api.login("serveradmin", "passwd");//ServerQuery Namen, Passwort(Login)
+        api.selectVirtualServerById(1);//Server ID
         api.setNickname("Jarvis");
         config.setDebugLevel(Level.OFF);
-        System.out.println("Connected to Server!");
-        System.out.println("Nickname set '\033Jarvis0m'");
-        System.out.println("Loading Files...");
+        System.out.println("\033[35mJarvis\033[0m: Connected to Server!");
+        System.out.println("\033[35mJarvis\033[0m: Nickname set 'Jarvis'");
+        System.out.println("\033[35mJarvis\033[0m: Loading Files...");
         chat.start();
-        System.out.println("32mAll Files enabled!\033");
+        System.out.println("\033[35mJarvis\033[0m: All Files enabled!");
         System.out.println(" ");
-        System.out.println("Success, \033[1mSYSTEM\033[0m connected");
-        System.out.println("------------------[\033Jarvis0m]------------------");
+        System.out.println("Success, \033[1mSYSTEM\033[0m installed and started!");
+        System.out.println("-----------------------------[\033[35mJarvis\033[0m]-----------------------------");
 
     }
 
