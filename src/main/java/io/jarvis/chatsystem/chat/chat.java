@@ -5,13 +5,10 @@ import com.github.theholywaffle.teamspeak3.api.event.TS3EventType;
 import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent;
 import io.jarvis.chatsystem.ai.api.AIConfiguration;
 import io.jarvis.chatsystem.ai.api.AIDataService;
+import io.jarvis.chatsystem.ai.api.AIServiceException;
 import io.jarvis.chatsystem.ai.api.model.AIRequest;
 import io.jarvis.chatsystem.ai.api.model.AIResponse;
 import io.jarvis.chatsystem.bot.jarvis;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 // *------------[Jarvis]------------
 // * by ZentornoLP and dici
@@ -28,39 +25,41 @@ public class chat {
             @Override
             public void onTextMessage(TextMessageEvent e) {
 
+                if (jarvis.api.getClientByUId(e.getInvokerUniqueId()).isServerQueryClient()) {
+                    return;
+                }
+
                 AIConfiguration configuration = new AIConfiguration("e45a85a037fe4724996970ccf668e827");
 
                 AIDataService dataService = new AIDataService(configuration);
 
-                String line;
+                String line = e.getMessage();
 
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-                    while (null != (line = reader.readLine())) {
+                System.out.println(line);
 
-                        try {
-                            AIRequest request = new AIRequest(line);
+                AIRequest request = new AIRequest(line);
 
-                            AIResponse response = dataService.request(request);
+                try {
+                    AIResponse response = dataService.request(request);
 
-                            if (response.getStatus().getCode() == 200) {
-                                System.out.println(response.getResult().getFulfillment().getSpeech());
-                            } else {
-                                System.err.println(response.getStatus().getErrorDetails());
-                            }
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
+                    String message = response.getResult().getFulfillment().getSpeech().replace(";BAN", "");
 
+                    if (response.getStatus().getCode() == 200) {
+                        jarvis.api.sendPrivateMessage(e.getInvokerId(), message);
+                        jarvis.api.banClient(e.getInvokerId(), 1, message);
+                        return;
+                    } else {
+                        System.err.println(response.getStatus().getErrorDetails());
+                        return;
                     }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                } catch (AIServiceException e1) {
+                    e1.printStackTrace();
                 }
-                System.out.println("See ya!");
 
             }
 
         });
-
     }
 
 }
+

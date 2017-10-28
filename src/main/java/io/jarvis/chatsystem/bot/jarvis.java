@@ -32,14 +32,15 @@ public class jarvis {
         System.out.println(" ");
         System.out.println("Starting Jarvis-System...");
         System.out.println("Connecting to IP...");
-        config.setHost("localhost");
-        config.setQueryPort(10011);
+        config.setHost("tntfreaks.de");
+
         query.connect();
-        query.getApi().login("serveradmin", "passwd");
-        config.setDebugLevel(Level.ALL);
-        query.getApi().selectVirtualServerById(1);
-        System.out.println("Connected to Server!");
+        //api.login("Jarvis", "passwd");
+        api.login("serveradmin", "passwd");
+        api.selectVirtualServerById(1);
         api.setNickname("Jarvis");
+        config.setDebugLevel(Level.OFF);
+        System.out.println("Connected to Server!");
         System.out.println("Nickname set '\033Jarvis0m'");
         System.out.println("Loading Files...");
         chat.start();
