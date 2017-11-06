@@ -34,7 +34,6 @@ public class jarvis {
         System.out.println("\033[35mJarvis\033[0m: Connecting to IP...");
         config.setHost("ServerIP");// Server IP zum Connecten
         query.connect();
-        //api.login("Jarvis", "passwd");
         api.login("serveradmin", "passwd");//ServerQuery Namen, Passwort(Login)
         api.selectVirtualServerById(1);//Server ID
         api.setNickname("Jarvis");
